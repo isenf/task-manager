@@ -38,7 +38,7 @@ userSchema.static.login = async function(email, password){
         } 
         throw Error('incorrect password');
     } 
-    throw Error('incorrect password');
+    throw Error('incorrect email');
 }
 
 const User = mongoose.model('User', userSchema);
