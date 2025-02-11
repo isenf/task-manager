@@ -23,16 +23,16 @@ const userSchema = new mongoose.Schema({
 
 userSchema.pre('save', async function (next) {
     const salt = await bcrypt.genSalt();
-    this.password = await bcrypt.hash(this.password, salt);
+    this.password = await bcrypt.hash(user.password, salt);
     next();
 });
 
-userSchema.static.login = async function(email, password){
+userSchema.statics.login = async function(email, password) {
     const user = await this.findOne({ email });
 
     if(user){
-        const auth = await bcrypt.compare(password, this.password);
-
+        const auth = await bcrypt.compare(password, user.password);
+        
         if(auth){
             return user;
         } 

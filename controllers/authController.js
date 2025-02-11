@@ -71,10 +71,10 @@ module.exports.login_post = async (req, res) => {
 
         const token = createToken(user._id);
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAgeToken * 1000 });
-        res.send(201).send({user: user._id});
+        res.status(201).send({user: user._id});
     } 
     catch(err){
-        const error = handle(err);
+        const error = handleErrors(err);
         res.status(400).json({error});
     }
 }
