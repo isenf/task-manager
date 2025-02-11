@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+const authRouter = require('./routes/authRoutes');
+
 require('dotenv').config();
 const dbURL = process.env.DATABASE_URL;
 const port = process.env.PORT || 3000;
@@ -9,6 +11,7 @@ const app = express();
 
 app.use(express.static('public'));
 app.use(express.json());
+app.use('/auth', authRouter);
 
 
 app.set('view engine', 'ejs');
