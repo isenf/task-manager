@@ -15,7 +15,7 @@ const taskSchema = new mongoose.Schema({
         enum: ['pending', 'in progress', 'completed'],
         default: 'pending'
     },
-    user: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: [true, 'task must be associated with a user']
