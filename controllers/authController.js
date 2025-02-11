@@ -35,7 +35,7 @@ const maxAgeToken = 5 * 24 * 60 * 60; //5 days
 
 const createToken = (id) =>{
     return jwt.sign({ id }, secretKey, {
-        expiresIn: maxAgeToken;
+        expiresIn: maxAgeToken
     });
 }
 
