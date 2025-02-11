@@ -30,3 +30,56 @@ const handleErrors = (err) =>{
 
     return errors;
 }
+
+const maxAgeToken = 5 * 24 * 60 * 60; //5 days
+
+const createToken = (id) =>{
+    return jwt.sign({ id }, secretKey, {
+        expiresIn: maxAgeToken;
+    });
+}
+
+module.exports.register_get = (req, res) =>{
+    res.render('register');
+}
+
+module.exports.login_get = (req, res) =>{
+    res.send('login');
+}
+
+module.exports.register_post = async (req, res) =>{
+    const {name, email, password} = req.body;
+
+    try{
+        const user = await User.create({ name, email, password });
+        const token = createToken(user._id);
+
+        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAgeToken * 1000 });
+        res.status(201).json({ user: user._id });
+    }
+    catch(err){
+        const error = handleErrors(err);
+        res.status(400).send({ error });
+    }
+}
+
+module.exports.login_post = async (req, res) => {
+    const { email, password } = req.body;
+
+    try{
+        const user = await User.login(email, password);
+
+        const token = createToken(user._id);
+        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAgeToken * 1000 });
+        res.send(201).send({user: user._id});
+    } 
+    catch(err){
+        const error = handle(err);
+        res.status(400).json({error});
+    }
+}
+
+module.exports.logout_get = (req, res) =>{
+    res.cookie('jwt', '', { maxAge: 1 });
+    res.redirect('/'); //change this after
+}
