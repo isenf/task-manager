@@ -25,4 +25,4 @@ mongoose.connect(dbURL)
 
 app.get('/*', checkUser);
 app.use('/auth', authRouter);
-app.use('/tasks', taskRouter);
+app.use('/task', taskRouter);

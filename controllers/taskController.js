@@ -13,6 +13,54 @@ module.exports.tasks_get = async (req, res) =>{
     }
 }
 
+module.exports.task_details_get = async (req, res) =>{
+    const { id } = req.params;
+
+    try{
+        const task = await Task.findById(id);
+
+        if(!task){
+            return res.status(404).json({message: 'task not found'});
+        }
+
+        res.status(200).json(task);
+    }
+    catch(err){
+        console.error(err);
+        return res.status(500).json({message: 'error at founding task', error: err.message});
+    }
+}
+
+module.exports.new_task_get = (req, res) =>{
+    res.render('form', {
+        title: 'Create a new task',
+        task: null,
+        action: '/task/new'
+    });
+}
+
+module.exports.task_edit_get = async (req, res) =>{
+    const { id } = req.params;
+
+    try{
+        const task = await Task.findById(id);
+
+        if(!task){
+            return res.status(404).send('task not found');
+        }
+
+        res.render('form', {
+            title: 'Edit task',
+            task,
+            action: `/task/edit/${id}`
+        });
+    }
+    catch(err){
+        console.error(err);
+        res.send(500).send('error at finding task');
+    }
+}
+
 module.exports.new_task_post = async (req, res) => {
     /*const { title, description, status} = req.body;
 
@@ -25,7 +73,7 @@ module.exports.new_task_post = async (req, res) => {
         const newTask = await Task.create({title, description, status, userId });
         res.status(201).json({message: 'task created successfullt', task: newTask});
     }catch(err){
-        console.log(err);
+        console.error(err);
         res.status(400).json({message: 'failed to create a new task'});
     }
 }
@@ -60,24 +108,6 @@ module.exports.task_edit_post = async (req, res) => {
     }
 }
 
-module.exports.task_details_get = async (req, res) =>{
-    const { id } = req.params;
-
-    try{
-        const task = await Task.findById(id);
-
-        if(!task){
-            return res.status(404).json({message: 'task not found'});
-        }
-
-        res.status(200).json(task);
-    }
-    catch(err){
-        console.error(err);
-        return res.status(500).json({message: 'error at founding task', error: err.message});
-    }
-}
-
 module.exports.task_delete = async (req, res) =>{
     const { id } = req.params;
 
@@ -91,8 +121,7 @@ module.exports.task_delete = async (req, res) =>{
         res.status(200).json({message: 'task deleted successfully'});
     }
     catch(err){
-        console.log(err);
-
+        console.error(err);
         res.status(500).json({message: 'error at deleting task', error: err.message});
     }
 }

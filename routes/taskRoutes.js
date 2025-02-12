@@ -5,10 +5,10 @@ const { requireAuth } = require('../middleware/authMiddleware');
 const router = Router();
 
 router.get('/', requireAuth, taskController.tasks_get);
-//router.get('/new-task', taskController.new_task_get); //view form.ejs
+router.get('/new', requireAuth, taskController.new_task_get); 
 router.post('/new-task', taskController.new_task_post);
 router.get('/:id', taskController.task_details_get);
-//router.get('/edit/:id', taskController.task_edit_get); //view form.ejs
+router.get('/edit/:id', taskController.task_edit_get); 
 router.post('/edit/:id', requireAuth, taskController.task_edit_post);
 router.delete('/delete/:id', requireAuth, taskController.task_delete);
 
