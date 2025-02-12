@@ -13,8 +13,6 @@ module.exports.tasks_get = async (req, res) =>{
     }
 }
 
-//    "userId": "67abc209456cece3ac439a7c"
-
 module.exports.new_task_post = async (req, res) => {
     /*const { title, description, status} = req.body;
 
@@ -29,5 +27,35 @@ module.exports.new_task_post = async (req, res) => {
     }catch(err){
         console.log(err);
         res.status(400).json({message: 'failed to create a new task'});
+    }
+}
+module.exports.task_edit_post = async (req, res) => {
+    const { id } = req.params;
+    const { title, description, status } = req.body;
+
+    try {
+        const task = await Task.findById(id);
+
+        if (!task) {
+            return res.status(404).json({ message: 'Task not found' });
+        }
+
+        task.title = title || task.title;
+        task.description = description || task.description;
+        task.status = status || task.status;
+
+        const updatedTask = await task.save();
+
+        return res.status(200).json({
+            message: 'Task updated successfully',
+            task: updatedTask
+        });
+    } 
+    catch (err) {
+        console.error(err);
+        return res.status(400).json({
+            message: 'Failed to update task',
+            error: err.message
+        });
     }
 }
