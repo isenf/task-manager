@@ -23,6 +23,6 @@ mongoose.connect(dbURL)
     .then((result) => app.listen(port))
     .catch((err) => console.log('error at connecting with the db',err))
 
+app.use('/auth',authRouter);
 app.get('/*', checkUser);
-app.use('/auth', authRouter);
-app.use('/task', taskRouter);
+app.use(taskRouter);
