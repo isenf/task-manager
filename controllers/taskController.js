@@ -59,3 +59,21 @@ module.exports.task_edit_post = async (req, res) => {
         });
     }
 }
+
+module.exports.task_details_get = async (req, res) =>{
+    const { id } = req.params;
+
+    try{
+        const task = await Task.findById(id);
+
+        if(!task){
+            return res.status(404).json({message: 'task not found'});
+        }
+
+        res.status(200).json(task);
+    }
+    catch(err){
+        console.error(err);
+        return res.status(500).json({message: 'error at founding task', error: err.message});
+    }
+}
