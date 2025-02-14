@@ -25,4 +25,5 @@ mongoose.connect(dbURL)
 
 app.use('/auth',authRouter);
 app.get('/*', checkUser);
+app.get('/favicon.ico', (req, res) => res.status(204).end());
 app.use(taskRouter);
