@@ -44,7 +44,7 @@ module.exports.register_get = (req, res) =>{
 }
 
 module.exports.login_get = (req, res) =>{
-    res.send('login');
+    res.render('auth/login');
 }
 
 module.exports.register_post = async (req, res) =>{
@@ -60,8 +60,8 @@ module.exports.register_post = async (req, res) =>{
         res.status(201).json({ user: user._id });
     }
     catch(err){
-        const error = handleErrors(err);
-        res.status(400).json({ errors: err });
+        const errors = handleErrors(err);
+        res.status(400).json({ errors });
     }
 }
 
@@ -82,6 +82,6 @@ module.exports.login_post = async (req, res) => {
 }
 
 module.exports.logout_get = (req, res) =>{
-    res.cookie('jwt', '', { maxAge: 1 });
+    res.cookie('jwt', '', { expires: new Date(0), httpOnly: true });
     res.redirect('/'); //change this after
 }
