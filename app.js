@@ -23,6 +23,11 @@ mongoose.connect(dbURL)
     .then((result) => app.listen(port))
     .catch((err) => console.log('error at connecting with the db',err))
 
+app.use((req, res, next) => {
+    res.locals.user = req.user || null;
+    next();
+});
+
 app.get('/', (req, res) =>{
     res.render('home');
 });
