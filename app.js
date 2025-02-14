@@ -23,7 +23,10 @@ mongoose.connect(dbURL)
     .then((result) => app.listen(port))
     .catch((err) => console.log('error at connecting with the db',err))
 
+app.get('/', (req, res) =>{
+    res.render('home');
+});
 app.use('/auth',authRouter);
 app.get('/*', checkUser);
-app.get('/favicon.ico', (req, res) => res.status(204).end());
+//app.get('/favicon.ico', (req, res) => res.status(204).end());
 app.use(taskRouter);
