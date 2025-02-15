@@ -49,7 +49,7 @@ module.exports.task_edit_get = async (req, res) =>{
             return res.status(404).send('task not found');
         }
 
-        res.render('form', {
+        res.render('tasks/form', {
             title: 'Edit task',
             task,
             action: `/task/edit/${id}`
@@ -94,10 +94,7 @@ module.exports.task_edit_post = async (req, res) => {
 
         const updatedTask = await task.save();
 
-        return res.status(200).json({
-            message: 'Task updated successfully',
-            task: updatedTask
-        });
+        return res.status(200).redirect('/task')
     } 
     catch (err) {
         console.error(err);
