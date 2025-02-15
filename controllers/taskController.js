@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 module.exports.tasks_get = async (req, res) =>{
     try{
         const tasks = await Task.find({ userId: req.user });
-        res.render('tasks', { tasks });
+        res.render('tasks/index', { tasks });
     } 
     catch(err){
         console.log(err);
@@ -32,7 +32,7 @@ module.exports.task_details_get = async (req, res) =>{
 }
 
 module.exports.new_task_get = (req, res) =>{
-    res.render('form', {
+    res.render('tasks/form', {
         title: 'Create a new task',
         task: null,
         action: '/task/new'
@@ -62,21 +62,21 @@ module.exports.task_edit_get = async (req, res) =>{
 }
 
 module.exports.new_task_post = async (req, res) => {
-    /*const { title, description, status} = req.body;
+    const { title, description, status } = req.body;
 
-    try {
-        const newTask = await Task.create({title, description, status, userId: req.user});
-*/
-    const { title, description, status, userId} = req.body;
-
-    try {
-        const newTask = await Task.create({title, description, status, userId });
-        res.status(201).json({message: 'task created successfullt', task: newTask});
-    }catch(err){
-        console.error(err);
-        res.status(400).json({message: 'failed to create a new task'});
+    if (!title || !description || !status) {
+        return res.status(400).json({ message: 'All fields are required' });
     }
-}
+
+    try {
+        const newTask = await Task.create({ title, description, status, userId: req.user });
+        res.status(201).redirect('/task');
+    } catch (err) {
+        console.error(err);
+        res.status(400).json({ message: 'Failed to create a new task', error: err.message });
+    }
+};
+
 module.exports.task_edit_post = async (req, res) => {
     const { id } = req.params;
     const { title, description, status } = req.body;
