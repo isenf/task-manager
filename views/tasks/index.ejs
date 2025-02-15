@@ -1,1 +1,24 @@
-<h1>There's nothing here</h1>
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<a href="/task/new">New task</a>
+
+<% if(tasks.length > 0){ %>
+    <ul>
+        <% tasks.forEach(task =>{ %>
+            <li>
+                <h2><%= task.title %></h2>
+                <p><%= task.status %></p>
+                <p><%= task.description %></p>
+                <a href="/task/edit/<%= task._id %>">Edit</a>
+                <form href="/task/delete/<%= task._id %>">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+<% } else{ %>
+    <p>No tasks found. create a new task</p>
+<% } %>
+
+<%- include('../partials/footer') %>
