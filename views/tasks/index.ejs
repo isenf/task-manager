@@ -7,13 +7,12 @@
     <ul>
         <% tasks.forEach(task =>{ %>
             <li>
-                <h2><%= task.title %></h2>
-                <p><%= task.status %></p>
-                <p><%= task.description %></p>
-                <a href="/task/edit/<%= task._id %>">Edit</a>
-                <form href="/task/delete/<%= task._id %>">
-                    <button type="submit">Delete</button>
-                </form>
+                    <a href="/task/<%= task._id %>">
+                    <h2><%= task.title %></h2>
+                    <p><%= task.status %></p>
+                    <p><%= task.description %></p>
+                    <spam>Click to see more info</spam>
+                </a>
             </li>
         <% }) %>
     </ul>
