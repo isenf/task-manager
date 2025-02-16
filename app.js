@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+const methodOverride = require('method-override');
 
 const authRouter = require('./routes/authRoutes');
 const taskRouter = require('./routes/taskRoutes');
@@ -16,6 +17,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
+app.use(methodOverride('_method'));
 
 app.set('view engine', 'ejs');
 
