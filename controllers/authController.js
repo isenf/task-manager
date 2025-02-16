@@ -83,5 +83,5 @@ module.exports.login_post = async (req, res) => {
 
 module.exports.logout_get = (req, res) =>{
     res.cookie('jwt', '', { expires: new Date(0), httpOnly: true });
-    res.redirect('/'); //change this after
+    res.redirect('/'); 
 }

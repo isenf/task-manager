@@ -23,7 +23,10 @@ module.exports.task_details_get = async (req, res) =>{
             return res.status(404).json({message: 'task not found'});
         }
 
-        res.status(200).json(task);
+        res.render('tasks/details', {
+            title: 'Task details',
+            task
+        });
     }
     catch(err){
         console.error(err);
@@ -105,20 +108,19 @@ module.exports.task_edit_post = async (req, res) => {
     }
 }
 
-module.exports.task_delete = async (req, res) =>{
+module.exports.task_delete = async (req, res) => {
     const { id } = req.params;
 
-    try{
+    try {
         const task = await Task.findByIdAndDelete(id);
 
-        if(!task){
-            res.status(404).json({message: 'task not found'});
+        if (!task) {
+            return res.status(404).json({ message: 'Task not found' });
         }
 
-        res.status(200).json({message: 'task deleted successfully'});
-    }
-    catch(err){
+        res.redirect('/task');
+    } catch (err) {
         console.error(err);
-        res.status(500).json({message: 'error at deleting task', error: err.message});
+        res.status(500).json({ message: 'Error deleting task', error: err.message });
     }
-}
+};
