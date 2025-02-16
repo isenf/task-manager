@@ -1,55 +1,52 @@
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 
-require('dotenv').config();
+require("dotenv").config();
 const secretKey = process.env.SECRET_KEY;
 
-const requireAuth = (req, res, next) =>{
+const requireAuth = async (req, res, next) => {
     const token = req.cookies.jwt;
 
-    if(token){
+    if (token) {
         jwt.verify(token, secretKey, async (err, decodedToken) => {
-            if(err){
+            if (err) {
                 console.log(err);
-                res.redirect('/login');
-            }
-            else{
-                req.user = decodedToken.id;
-                next();
-            }
-        });
-    }
-    else{
-        res.redirect('/login');
-    }
-}
-
-const checkUser = (req, res, next) =>{
-    const token = req.cookies.jwt;
-
-    if(token){
-        jwt.verify(token, secretKey, async (err, decodedToken) =>{
-            if(err){
-                console.log(err);
-                res.locals.user = null;
-                req.user = null;
-                next();
-            }
-            else{
+                return res.redirect("/login");
+            } else {
                 let user = await User.findById(decodedToken.id);
-                res.locals.user = user;
+                if (!user) {
+                    return res.redirect("/login");
+                }
                 req.user = user;
                 next();
             }
         });
+    } else {
+        res.redirect("/login");
     }
-    else{
+};
+
+const checkUser = async (req, res, next) => {
+    const token = req.cookies.jwt;
+
+    if (token) {
+        jwt.verify(token, secretKey, async (err, decodedToken) => {
+            if (err) {
+                console.log(err);
+                res.locals.user = null;
+                req.user = null;
+            } else {
+                let user = await User.findById(decodedToken.id);
+                res.locals.user = user;
+                req.user = user;
+            }
+            next();
+        });
+    } else {
         res.locals.user = null;
         req.user = null;
         next();
     }
-
-    console.log(req.user);
-}
+};
 
 module.exports = { requireAuth, checkUser };
