@@ -11,18 +11,18 @@ const requireAuth = async (req, res, next) => {
         jwt.verify(token, secretKey, async (err, decodedToken) => {
             if (err) {
                 console.log(err);
-                return res.redirect("/login");
+                return res.redirect("/auth/login");
             } else {
                 let user = await User.findById(decodedToken.id);
                 if (!user) {
-                    return res.redirect("/login");
+                    return res.redirect("/auth/login");
                 }
                 req.user = user;
                 next();
             }
         });
     } else {
-        res.redirect("/login");
+        res.redirect("/auth/login");
     }
 };
 
