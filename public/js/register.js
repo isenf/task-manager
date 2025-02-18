@@ -31,7 +31,7 @@ form.addEventListener('submit', async (e) => {
         }
 
         if (data.user) {
-            location.assign('/');
+            location.assign('/task');
             console.log(data);
         }
     }
@@ -39,5 +39,3 @@ form.addEventListener('submit', async (e) => {
         console.log(err);
     }
 });
-
-console.log('está tudo funcionando bem')
