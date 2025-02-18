@@ -3,16 +3,16 @@
 
 <h2>Login with your account</h2>
 
-<form>
+<form autocomplete="off">
     <label for="email">E-mail:</label>
-        <input type="text" name="email" required>
-        <div class="email error"></div>
+    <input type="text" name="email" placeholder="example@domain.com" required>
+    <div class="email error"></div>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" required>
-        <div class="password error"></div>
+    <label for="password">Password:</label>
+    <input type="password" name="password" autocomplete="current-password" required>
+    <div class="password error"></div>
 
-        <button>Login</button>
+    <button>Login</button>
 </form>
 
 <script src="/js/login.js"></script>
