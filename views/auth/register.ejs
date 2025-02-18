@@ -1,23 +1,33 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
 
-    <h2>Create your account!</h2>
+<div class="auth-form">
+    <h1>Create your account!</h1>
 
     <form autocomplete="off">
-        <label for="name">Name:</label>
-        <input type="text" name="name" required>
+        <div class="auth-form__atr">
+            <label for="name">Name:</label>
+            <input type="text" name="name" required>
+        </div>
 
-        <label for="email">E-mail:</label>
-        <input type="text" name="email" placeholder="example@domain.com" required>
-        <div class="email error"></div>
+        <div class="auth-form__atr">
+            <label for="email">E-mail:</label>
+            <input type="text" name="email" placeholder="example@domain.com" required>
+            <div class="email error"></div>
+        </div>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" autocomplete="new-password" required>
-        <div class="password error"></div>
+        <div class="auth-form__atr">
+            <label for="password">Password:</label>
+            <input type="password" name="password" autocomplete="new-password" minlength="6" required>
+            <div class="password error"></div>
+        </div>
 
-        <button>Sign up</button>
+        <div>
+            <button>Sign up</button>
+        </div>
     </form>
 
-    <script src="/js/register.js"></script>
+</div>
+<script src="/js/register.js"></script>
 
-    <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>

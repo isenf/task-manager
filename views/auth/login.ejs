@@ -1,19 +1,27 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
 
-<h2>Login with your account</h2>
+<div class="auth-form">
+    <h1>Login with your account</h1>
 
-<form autocomplete="off">
-    <label for="email">E-mail:</label>
-    <input type="text" name="email" placeholder="example@domain.com" required>
-    <div class="email error"></div>
+    <form autocomplete="off">
+        <div class="auth-form__atr">
+            <label for="email">E-mail:</label>
+            <input type="text" name="email" placeholder="example@domain.com" required>
+            <div class="email error"></div>
+        </div>
 
-    <label for="password">Password:</label>
-    <input type="password" name="password" autocomplete="current-password" required>
-    <div class="password error"></div>
+        <div class="auth-form__atr">
+            <label for="password">Password:</label>
+            <input type="password" name="password" autocomplete="current-password" required>
+            <div class="password error"></div>
+        </div>
 
-    <button>Login</button>
-</form>
+        <div>
+            <button>Login</button>
+        </div>
+    </form>
+</div>
 
 <script src="/js/login.js"></script>
 

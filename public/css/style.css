@@ -5,7 +5,7 @@
     --black: #000;
     --gray: #a1a1a1;
     --blue: #0077cc;
-    --ligth-blue: #87c3e8;
+    --ligth-blue: #78b8e0;
 }
 
 body{
@@ -67,4 +67,66 @@ footer{
 footer a{
     color: var(--gray);
     text-decoration: underline;
+}
+
+.auth-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.auth-form__atr{
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    font-weight: 550;
+}
+
+.auth-form__atr label{
+    font-size: 1rem;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    color: var(--ligth-blue);
+}
+
+.auth-form h1{
+    font-weight: bolder;
+}
+
+.auth-form__atr input{
+    width: 24rem;
+    height: 2rem;
+    border-radius: 15px;
+    border: solid 2px var(--blue);
+    box-shadow: none;
+    color: var(--black);
+    font-size: 1.15rem;
+    padding: 2px 10px;
+}
+
+.auth-form__atr input::placeholder{
+    color: var(--gray);
+    font-size: 1.15rem;
+    font-weight: normal;
+}
+
+.auth-form div button{
+    height: 2.5rem;
+    width: 10rem;
+    background-color: var(--blue);
+    color: var(--white);
+    border: none;
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.auth-form div button:hover{
+    background-color: var(--white);
+    border: solid 2px var(--blue);
+    color: var(--blue);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
