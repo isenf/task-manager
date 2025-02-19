@@ -1,6 +1,9 @@
 <header>
-    <nav>
-        <span>Task manager</span>
+    <nav class="navbar">
+        <div>
+            <img src="/assets/task-icon.svg" alt="task icon">
+            <span>Task manager</span>
+        </div>
         <ul class="navbar-elements">
             <% if(user){ %>
                 <li>Welcome, <%= user.name %>
