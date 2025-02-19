@@ -1,9 +1,16 @@
 <%- include('./partials/head') %>
 
-<h1>Welcome to task manager website</h1>
-<p>Easily create, organize, and manage your tasks with efficiency and simplicity.</p>
-<img src="assets/task.png" alt="a group of tasks">
-<a href="auth/register">Create an account</a>
-<a href="auth/login">Log in with your account.</a>
+<div class="home-info">
+    <div class="home-info__content">
+        <h1>Welcome to task manager website</h1>
+        <p>Easily create, organize, and manage your tasks with efficiency and simplicity.</p>
+        <img src="assets/task.png" alt="a group of tasks">
+    </div>
+    <div class="home-info__buttons">
+        <a class="register" href="auth/register">Create an account <span class="material-symbols-outlined">arrow_forward</span></a>
+        <a class="login" href="auth/login">Log in with your account.</a>
+    </div>
+
+</div>
 
 <%- include('./partials/footer') %>

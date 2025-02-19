@@ -80,7 +80,7 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 4rem 0;
+    padding: 4.5rem 0;
 }
 
 footer a{
@@ -88,12 +88,6 @@ footer a{
     text-decoration: underline;
 }
 
-.auth-form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
 
 .auth-form__atr{
     display: flex;
@@ -130,9 +124,8 @@ footer a{
     font-weight: normal;
 }
 
-.auth-form div button{
-    height: 2.5rem;
-    width: 10rem;
+.auth-form div button, .register{
+    padding: .6rem 2.5rem;
     background-color: var(--blue);
     color: var(--white);
     border: none;
@@ -148,4 +141,63 @@ footer a{
     border: solid 2px var(--blue);
     color: var(--blue);
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.material-symbols-outlined {
+    color: var(--white);
+    padding-left: .5rem;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+.home-info, .auth-form, .home-info__content, .home-info__buttons, .register{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.home-info{
+    max-height: 80vh;
+}
+
+.home-info__content h1, .home-info__content p, .home-info__content img{
+    margin: 0;
+
+}
+
+.home-info__content h1{
+    padding-top: 6rem;
+    font-size: 2rem;
+}
+
+.home-info__content p{
+    width: 80%;
+    text-align: center;
+    padding: .5rem 0;
+}
+
+.home-info__content img{
+    height: 18rem;
+}
+
+.register{
+    flex-direction: row;
+}
+
+.login{
+    margin-top: .5rem;
+    color: var(--ligth-blue);
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.home-info__buttons{
+    margin: .5rem;
+    padding: .25rem;
 }
