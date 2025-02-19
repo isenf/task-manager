@@ -111,7 +111,7 @@ footer a{
     width: 24rem;
     height: 2rem;
     border-radius: 15px;
-    border: solid 2px var(--blue);
+    border: solid 2px var(--ligth-blue);
     box-shadow: none;
     color: var(--black);
     font-size: 1.15rem;
@@ -124,11 +124,11 @@ footer a{
     font-weight: normal;
 }
 
-.auth-form div button, .register{
+.auth-form div button, .register {
     padding: .6rem 2.5rem;
     background-color: var(--blue);
     color: var(--white);
-    border: none;
+    border: solid 2px var(--blue);
     display: block;
     margin: 0 auto;
     border-radius: 15px;
@@ -136,14 +136,13 @@ footer a{
     font-weight: 600;
 }
 
-.auth-form div button:hover{
+.auth-form div button:hover, .top-content a:hover {
     background-color: var(--white);
-    border: solid 2px var(--blue);
     color: var(--blue);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.material-symbols-outlined {
+.material-symbols-outlined .arrow{
     color: var(--white);
     padding-left: .5rem;
     font-variation-settings:
@@ -153,11 +152,51 @@ footer a{
         'opsz' 48
 }
 
-.home-info, .auth-form, .home-info__content, .home-info__buttons, .register{
+.home-info, .auth-form, .home-info__content, .home-info__buttons, .register, .index-content, .top-content a{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.top-content, .register, .top-content a{
+    flex-direction: row;
+}
+
+.top-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.top-content a{
+    background-color: var(--white);
+    color:#0077cc;
+    border: solid 2px var(--blue);
+    font-size: 1rem;
+    padding: .35rem .5rem;
+    border-radius: 15px;
+    font-weight: 500;
+}
+
+
+.material-symbols-outlined .add{
+    color: var(--blue);
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+.all-tasks ul{
+    padding: 0;
+    margin: 0;
+}
+
+.all-tasks li{
+    border: solid 2px var(--ligth-blue)
 }
 
 .home-info{
@@ -184,10 +223,6 @@ footer a{
     height: 18rem;
 }
 
-.register{
-    flex-direction: row;
-}
-
 .login{
     margin-top: .5rem;
     color: var(--ligth-blue);
@@ -201,3 +236,10 @@ footer a{
     margin: .5rem;
     padding: .25rem;
 }
+
+input:focus{
+    background-color: rgba(0, 0, 0, .04);
+    border: solid 2px var(--blue) !important;
+    outline: none;
+}
+

@@ -1,29 +1,35 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
 
-<div>
-    <h1>All tasks:</h1>
-    <a href="/task/new">New task</a>
-</div>
+<div class="index-content">
+    <div class="top-content">
+        <h1>All tasks:</h1>
+        <a href="/task/new">
+            <span class="material-symbols-outlined add">
+                add
+            </span>New task</a>
+    </div>
 
-<div>
-    <% if(tasks.length > 0){ %>
-        <ul>
-            <% tasks.forEach(task =>{ %>
-                <li>
+    <div class="all-tasks">
+        <% if(tasks.length > 0){ %>
+            <ul>
+                <% tasks.forEach(task =>{ %>
+                    <li>
                         <a href="/task/<%= task._id %>">
-                        <h2><%= task.title %></h2>
-                        <p><%= task.status %></p>
-                        <p><%= task.description %></p>
-                        <spam>Click to see more info</spam>
-                    </a>
-                </li>
-            <% }) %>
-    </ul>
+                            <h2><%= task.title %></h2>
+                            <p><%= task.status %></p>
+                            <p><%= task.description %></p>
+                            <spam>Click to see more info</spam>
+                        </a>
+                    </li>
+                <% }) %>
+        </ul>
 
-    <% } else{ %>
-        <p>No tasks found. create a new task</p>
-    <% } %>
+        <% } else{ %>
+            <p>No tasks found. create a new task</p>
+        <% } %>
+    </div>
+
 </div>
 
 <%- include('../partials/footer') %>
