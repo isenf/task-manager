@@ -236,6 +236,13 @@ footer a{
     line-height: 1.5;
 }
 
+.all-tasks li span{
+    color: var(--ligth-blue) !important;
+    text-decoration: underline;
+    display: flex;
+    justify-content: center;
+}
+
 .home-info{
     max-height: 80vh;
 }
