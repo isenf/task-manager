@@ -17,7 +17,7 @@
                     <li>
                         <div class="task-title">
                             <h2><%= task.title %></h2>
-                            <p><%= task.status %></p>
+                            <p class="task-status"><%= task.status %></p>
                         </div>
                         <p><%= task.description %></p>
                         <a href="/task/<%= task._id %>">
@@ -33,5 +33,7 @@
     </div>
 
 </div>
+
+<script src="/js/script.js"></script>
 
 <%- include('../partials/footer') %>

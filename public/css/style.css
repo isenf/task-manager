@@ -6,6 +6,9 @@
     --gray: #a1a1a1;
     --blue: #0077cc;
     --ligth-blue: #78b8e0;
+    --red: #ed4a3c;
+    --orange: #ffa351;
+    --green: #81de76;
 }
 
 body{
@@ -277,3 +280,19 @@ input:focus{
     outline: none;
 }
 
+.status-pending, .status-in-progress, .status-completed{
+    font-weight: bold;
+}
+
+.status-pending{
+    color: var(--red) !important;
+}
+
+.status-in-progress{
+    color: var(--orange) !important;
+
+}
+
+.status-completed{
+    color: var(--green) !important;
+}
