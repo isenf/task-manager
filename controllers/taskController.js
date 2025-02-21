@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 module.exports.tasks_get = async (req, res) =>{
     try{
-        const tasks = await Task.find({ userId: req.user });
+        const tasks = await Task.find({ userId: req.user }).sort({createdAt: -1});
         res.render('tasks/index', { tasks });
     } 
     catch(err){
