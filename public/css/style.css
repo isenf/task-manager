@@ -159,11 +159,15 @@ footer a{
     flex-direction: column;
 }
 
-.top-content, .register, .top-content a{
+.top-content, .register, .top-content a, .all-tasks ul li .task-title{
     flex-direction: row;
 }
 
 .top-content{
+    margin-top: 1rem;
+}
+
+.top-content, .all-tasks ul li .task-title{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -180,7 +184,6 @@ footer a{
     font-weight: 500;
 }
 
-
 .material-symbols-outlined .add{
     color: var(--blue);
     font-variation-settings:
@@ -190,13 +193,44 @@ footer a{
         'opsz' 48
 }
 
-.all-tasks ul{
+.all-tasks ul {
     padding: 0;
+    margin: 0;
+    width: 100%; 
+}
+
+.all-tasks li {
+    border: solid 2px var(--ligth-blue);
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    width: 100%;
+    box-sizing: border-box;/
+}
+
+.all-tasks{
+    max-width: 60vw;
+    margin: .5rem 0;
+}
+
+.all-tasks li h2 {
+    max-width: 75%; 
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
     margin: 0;
 }
 
-.all-tasks li{
-    border: solid 2px var(--ligth-blue)
+.all-tasks li p {
+    margin: 5px 0;
+    color: var(--gray);
+    max-width: 100%;
+    display: -webkit-box; 
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    line-height: 1.5;
 }
 
 .home-info{

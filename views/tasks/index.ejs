@@ -15,10 +15,12 @@
             <ul>
                 <% tasks.forEach(task =>{ %>
                     <li>
-                        <a href="/task/<%= task._id %>">
+                        <div class="task-title">
                             <h2><%= task.title %></h2>
                             <p><%= task.status %></p>
-                            <p><%= task.description %></p>
+                        </div>
+                        <p><%= task.description %></p>
+                        <a href="/task/<%= task._id %>">
                             <spam>Click to see more info</spam>
                         </a>
                     </li>
