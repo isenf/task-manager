@@ -99,18 +99,19 @@ footer a{
     font-weight: 550;
 }
 
-.auth-form__atr label{
+.auth-form__atr label, .new-task label{
     font-size: 1rem;
     margin-left: 10px;
     margin-bottom: 5px;
     color: var(--ligth-blue);
+    font-weight: 550;
 }
 
 .auth-form h1{
     font-weight: bolder;
 }
 
-.auth-form__atr input{
+.auth-form__atr input, .new-task input{
     width: 24rem;
     height: 2rem;
     border-radius: 15px;
@@ -119,6 +120,7 @@ footer a{
     color: var(--black);
     font-size: 1.15rem;
     padding: 2px 10px;
+    background-color: var(--white);
 }
 
 .auth-form__atr input::placeholder{
@@ -155,15 +157,16 @@ footer a{
         'opsz' 48
 }
 
-.home-info, .auth-form, .home-info__content, .home-info__buttons, .register, .index-content, .top-content a{
+.home-info, .auth-form, .home-info__content, .home-info__buttons, .register, .index-content,
+.top-content a, .new-task div {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.top-content, .register, .top-content a, .all-tasks ul li .task-title{
-    flex-direction: row;
+.top-content, .register, .top-content a, .all-tasks ul li .task-title, .status-btn{
+    flex-direction: row !important;
 }
 
 .top-content{
@@ -311,4 +314,26 @@ input:focus{
     display: flex;
     justify-content: flex-end;
     margin-right: 10px;
+}
+
+.new-task textarea{
+    border: solid 2px var(--ligth-blue);
+    border-radius: 15px;
+    padding: 2px 10px;
+    font-size: 1.15rem;
+    width: 24rem;
+    min-height: 100px;
+    resize: vertical;
+    background-color: var(--white);
+}
+
+.new-task textarea:focus{
+    border-color: var(--blue);
+    background-color: rgba(0, 0, 0, .04);
+    outline: none;
+}
+
+.new-task div{
+    margin: .75rem 0;
+    
 }
