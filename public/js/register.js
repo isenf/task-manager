@@ -1,6 +1,6 @@
 const form = document.querySelector('form');
-const emailErr = document.querySelector('.email.error');
-const passwordErr = document.querySelector('.password.error');
+const emailErr = document.querySelector('.error.email');
+const passwordErr = document.querySelector('.error.password');
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -19,23 +19,16 @@ form.addEventListener('submit', async (e) => {
             headers: { 'Content-Type': 'application/json' }
         });
 
-        if (!res.ok) {
-            throw new Error('Network response was not ok');
-        }
-
         const data = await res.json();
 
         if (data.errors) {
+            console.log("Erros recebidos do servidor:", data.errors);
             emailErr.textContent = data.errors.email || '';
             passwordErr.textContent = data.errors.password || '';
-        }
-
-        if (data.user) {
+        } else if (res.ok && data.user) {
             location.assign('/task');
-            console.log(data);
         }
-    }
-    catch (err) {
-        console.log(err);
+    } catch (err) {
+        console.log("Erro durante a requisição:", err);
     }
 });
