@@ -79,12 +79,7 @@ This will run the app and monitor for changes, making the development process sm
 ```bash
 npm install -g nodemon
 ```  
-Alternatively, you can add a script in your `package.json` to run the project:  
-```json
-"scripts": {
-  "dev": "nodemon app"
-}
-```  
+
 Then, you can run the project with:  
 ```bash
 npm run dev
