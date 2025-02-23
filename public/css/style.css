@@ -303,3 +303,12 @@ input:focus{
 .status-completed{
     color: var(--green) !important;
 }
+
+.error{
+    color: var(--red) !important; 
+    font-size: .75em;
+    font-weight: 600;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
