@@ -28,6 +28,10 @@ const handleErrors = (err) =>{
         });
     }
 
+    if (err.message.includes('please enter a valid email')) {
+        errors.email = 'please enter a valid email';
+    }
+
     return errors;
 }
 
@@ -48,6 +52,7 @@ module.exports.login_get = (req, res) =>{
 }
 
 module.exports.register_post = async (req, res) =>{
+    console.log("Corpo da requisição recebido:", req.body); // Debug
     const {name, email, password} = req.body;
 
     console.log(name, email, password)
@@ -61,6 +66,7 @@ module.exports.register_post = async (req, res) =>{
     }
     catch(err){
         const errors = handleErrors(err);
+        console.log(errors);
         res.status(400).json({ errors });
     }
 }
@@ -76,8 +82,8 @@ module.exports.login_post = async (req, res) => {
         res.status(201).json({user: user._id});
     } 
     catch(err){
-        const error = handleErrors(err);
-        res.status(400).json({error});
+        const errors = handleErrors(err);
+        res.status(400).json({ errors });
     }
 }
 

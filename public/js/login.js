@@ -1,4 +1,3 @@
-
 const form = document.querySelector('form');
 const emailErr = document.querySelector('.email.error');
 const passwordErr = document.querySelector('.password.error');
@@ -20,10 +19,11 @@ form.addEventListener('submit', async (e) =>{
         });
 
         const data = await res.json();
+        console.log("Resposta do servidor:", data);
 
         if(data.errors){
-            emailErr.textContent = data.errors.email;
-            passwordErr.textContent = data.errors.password;
+            emailErr.textContent = data.errors.email || '';
+            passwordErr.textContent = data.errors.password || '';
         }
 
         if(data.user){
