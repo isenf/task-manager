@@ -18,11 +18,16 @@ const requireAuth = async (req, res, next) => {
                     return res.redirect("/auth/login");
                 }
                 req.user = user;
+
+                if(req.path === "/login" || req.path === "/register"){
+                    return res.redirect("/task");
+                }
+
                 next();
             }
         });
     } else {
-        res.redirect("/auth/login");
+        return res.redirect("/auth/login");
     }
 };
 
