@@ -129,7 +129,7 @@ footer a{
     font-weight: normal;
 }
 
-.auth-form div button, .register {
+.auth-form div button, .register{
     padding: .6rem 2.5rem;
     background-color: var(--blue);
     color: var(--white);
@@ -141,7 +141,7 @@ footer a{
     font-weight: 600;
 }
 
-.auth-form div button:hover, .top-content a:hover {
+.auth-form div button:hover, .top-content a:hover, .status-btn button:hover {
     background-color: var(--white);
     color: var(--blue);
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -158,14 +158,14 @@ footer a{
 }
 
 .home-info, .auth-form, .home-info__content, .home-info__buttons, .register, .index-content,
-.top-content a, .new-task div {
+.top-content a{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.top-content, .register, .top-content a, .all-tasks ul li .task-title, .status-btn{
+.top-content, .register, .top-content a, .all-tasks ul li .task-title{
     flex-direction: row !important;
 }
 
@@ -334,6 +334,44 @@ input:focus{
 }
 
 .new-task div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     margin: .75rem 0;
-    
+}
+
+.new-task div label{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.status-btn{
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.status-btn button{
+    border: solid 2px var(--blue);
+    padding: .5rem 1.5rem;
+    color: var(--white);
+    background-color: var(--blue);
+    border-radius: 15px;
+    display: block;
+    align-self: center;
+    margin-right: 1rem;
+}
+
+.status-btn select{
+    border: solid 2px var(--ligth-blue);
+    border-radius: 15px;
+    padding: .1rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.status-btn select:focus{
+    border-color: var(--blue);
+    outline: none;
 }
