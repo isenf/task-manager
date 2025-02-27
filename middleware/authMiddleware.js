@@ -7,6 +7,9 @@ const secretKey = process.env.SECRET_KEY;
 const requireAuth = async (req, res, next) => {
     const token = req.cookies.jwt;
 
+    const blockedForAuth = ["/auth/login", "/auth/register"];
+    const blockedForUnauth = ["/task"]
+
     if (token) {
         jwt.verify(token, secretKey, async (err, decodedToken) => {
             if (err) {
@@ -15,11 +18,12 @@ const requireAuth = async (req, res, next) => {
             } else {
                 let user = await User.findById(decodedToken.id);
                 if (!user) {
+                    res.clearCookie("jwt");
                     return res.redirect("/auth/login");
                 }
                 req.user = user;
 
-                if(req.path === "/login" || req.path === "/register"){
+                if(blockedForAuth.includes(req.path)){
                     return res.redirect("/task");
                 }
 
@@ -27,7 +31,11 @@ const requireAuth = async (req, res, next) => {
             }
         });
     } else {
-        return res.redirect("/auth/login");
+        if (blockedForUnauth.includes(req.path)) {
+            return res.redirect("/auth/login");
+        }
+
+        next();
     }
 };
 
