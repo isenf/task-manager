@@ -1,7 +1,8 @@
 
 # Task Manager Website
 This project is a simple way to test my knowledge of server-side development, including authentication, database communication, route management, cookies, and middleware.
-**I'm still working on this project, there's so many things to improve**
+<br>
+**I have finished this project, and I don't recommend it to anyone. There are so many errors and things to improve. I think that it's good for a first project, btw. 🫣🫣**
 
 ## ⚠️ Warning
 > Before reading this, please note that English is not my native language, so there may be some grammatical mistakes in the files and commits.  
