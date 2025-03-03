@@ -8,8 +8,10 @@ const requireAuth = async (req, res, next) => {
     const token = req.cookies.jwt;
 
     const blockedForAuth = ["/auth/login", "/auth/register"];
-    const blockedForUnauth = ["/task"]
-
+    const blockedForUnauth = ["/task"];
+    
+    const normalizedPath = req.originalUrl.split('?')[0].replace(/\/$/, ""); 
+    
     if (token) {
         jwt.verify(token, secretKey, async (err, decodedToken) => {
             if (err) {
@@ -23,7 +25,7 @@ const requireAuth = async (req, res, next) => {
                 }
                 req.user = user;
 
-                if(blockedForAuth.includes(req.path)){
+                if(blockedForAuth.includes(normalizedPath)){
                     return res.redirect("/task");
                 }
 
@@ -31,7 +33,7 @@ const requireAuth = async (req, res, next) => {
             }
         });
     } else {
-        if (blockedForUnauth.includes(req.path)) {
+        if (blockedForUnauth.includes(normalizedPath)) {
             return res.redirect("/auth/login");
         }
 
