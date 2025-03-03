@@ -141,7 +141,7 @@ footer a{
     font-weight: 600;
 }
 
-.auth-form div button:hover, .top-content a:hover, .status-btn button:hover {
+.auth-form div button:hover, .status-btn button:hover {
     background-color: var(--white);
     color: var(--blue);
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -180,7 +180,7 @@ footer a{
     width: 100%;
 }
 
-.top-content a{
+.top-content a, .btn-delete, .btn-edit{
     background-color: var(--white);
     color:#0077cc;
     border: solid 2px var(--blue);
@@ -374,4 +374,82 @@ input:focus{
 .status-btn select:focus{
     border-color: var(--blue);
     outline: none;
+}
+
+.task-details {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 20px;
+    border: 2px solid var(--ligth-blue);
+    border-radius: 15px;
+    background-color: var(--white);
+}
+
+.task-details__title-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.task-details__title-status h1 {
+    margin: 0;
+    font-size: 24px;
+    color: var(--blue);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+}
+
+.task-details__title-status p {
+    margin: 0;
+    font-size: 16px;
+    color: var(--gray);
+    font-weight: 500;
+}
+
+.task-details__description {
+    margin-bottom: 20px; 
+    font-size: 16px;
+    color: var(--black);
+    line-height: 1.5;
+}
+
+.task-details__meta-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.task-details__meta-actions p {
+    margin: 0;
+}
+
+.task-details__actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-delete {
+    background-color: var(--red);
+    color: var(--white);
+    border: 2px solid var(--red);
+}
+
+.btn-edit, .btn-delete{
+    padding: .4em .8em;
+}
+
+.btn-edit:hover{
+    background-color: var(--blue);
+    color: var(--white);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.btn-delete:hover {
+    background-color: var(--white);
+    color: var(--red);
+    transition: background-color 0.3s ease, color 0.3s ease;
+
 }

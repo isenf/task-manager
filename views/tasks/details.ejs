@@ -1,18 +1,23 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
 
-<h1><%= task.title %></h1>
+<div class="task-details">
+    <div class="task-details__title-status">
+        <h1><%= task.title %></h1>
+        <p><strong>Status: </strong><span class="status-<%= task.status.toLowerCase().replace(' ', '-') %>"><%= task.status %></span></p>
+    </div>
+    
+    <p class="task-details__description"><strong>Description: </strong><%= task.description %></p>
 
-<p><strong>Description: </strong><%= task.description %></p>
-<p><strong>Status: </strong><%= task.status %></p>
-<p><strong>Created at: </strong><%= task.createdAt.toLocaleString() %></p>
-<p><strong>Last update: </strong><%= task.updatedAt.toLocaleString() %></p>
-
-<div>
-    <a href="/task/edit/<%= task._id %>">Edit</a>
-    <form action="/task/delete/<%= task._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete</button>
-    </form>
+    <div class="task-details__meta-actions">
+        <p><strong>Created at: </strong><%= task.createdAt.toLocaleString() %></p>
+        <p><strong>Last update: </strong><%= task.updatedAt.toLocaleString() %></p>
+        <div class="task-details__actions">
+            <a href="/task/edit/<%= task._id %>" class="btn-edit">Edit</a>
+            <form action="/task/delete/<%= task._id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn-delete">Delete</button>
+            </form>
+        </div>
+    </div>
 </div>
-
 <%- include('../partials/footer') %>
